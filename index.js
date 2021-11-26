@@ -14,13 +14,14 @@ app.use(express.json())
 
 app.post('/', (req, res) => {
     axios.post(req.body.url, req.body.param).then(res1 => {
+        console.debug("收到数据:", res1.data)
         let callbackData = {
             param: req.body.param,
-            result: res1.data.data,
+            result: res1.data.Data,
             id: req.body.id,
             startTime: req.body.startTime,
-            errorCode: res1.data.code,
-            errorMsg: res1.data.msg
+            errorCode: res1.data.Code,
+            errorMsg: res1.data.Message
         }
         return axios.post(req.body.callback, callbackData)
     }).catch(error => {
