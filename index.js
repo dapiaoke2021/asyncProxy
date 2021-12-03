@@ -13,7 +13,8 @@ app.use(
 app.use(express.json())
 
 app.post('/', (req, res) => {
-    axios.post(req.body.url, req.body.param).then(res1 => {
+    console.debug(req.body.url, req.body.protocolParam);
+    axios.post(req.body.url, req.body.protocolParam).then(res1 => {
         console.debug("收到数据:", res1.data)
         let callbackData = {
             param: req.body.param,
